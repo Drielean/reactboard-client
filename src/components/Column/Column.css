@@ -1,11 +1,11 @@
-.column {
+.column-place {
   width: 30%;
-  margin-left: 10px;
+  margin-top: 20px;
 }
 
 .droppable-col {
   width: 100%;
-  background-color: gray;
+  background-color: rgba(1, 1, 1, 0.1);
   padding: 10px 10px 0 10px;
   border-radius: 7px;
   display: flex;

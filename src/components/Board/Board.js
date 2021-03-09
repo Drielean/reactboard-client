@@ -16,7 +16,7 @@ function Board() {
     async function fetchBoard() {
       try {
         const response = await axios.get("http://localhost:4000/board/main");
-        console.log(response.data);
+
         setState({ ...response.data });
       } catch (err) {
         console.error(err);
@@ -26,8 +26,8 @@ function Board() {
   }, []);
 
   const handleDragEnd = ({ destination, source }) => {
-    console.log("destination:", destination);
-    console.log("source:", source);
+    // console.log("destination:", destination);
+    // console.log("source:", source);
     if (!destination) {
       return;
     }
@@ -64,6 +64,50 @@ function Board() {
         0,
         cardCopy
       );
+
+      //Organiza as colunas que sofreram alterações para enviar ao banco de dados
+      const sourceColumCardsIDs = prev.columns[sourceColumnIndex].cards.map(
+        (card) => card._id
+      );
+      const sourceColumn = {
+        ...{ _id: prev.columns[sourceColumnIndex]._id },
+        ...{ created: prev.columns[sourceColumnIndex].created },
+        ...{ key: prev.columns[sourceColumnIndex].key },
+        ...{ boardId: prev.columns[sourceColumnIndex].boardId },
+        ...{ title: prev.columns[sourceColumnIndex].title },
+        ...{ cards: sourceColumCardsIDs },
+      };
+
+      const destinationColumCardsIDs = prev.columns[
+        destinationColumnIndex
+      ].cards.map((card) => card._id);
+
+      const destinationColumn = {
+        ...{ _id: prev.columns[destinationColumnIndex]._id },
+        ...{ created: prev.columns[destinationColumnIndex].created },
+        ...{ key: prev.columns[destinationColumnIndex].key },
+        ...{ boardId: prev.columns[destinationColumnIndex].boardId },
+        ...{ title: prev.columns[destinationColumnIndex].title },
+        ...{ cards: destinationColumCardsIDs },
+      };
+
+      //Atualiza o banco de dados antes de atualizar o state
+
+      async function updateDB(sourceColumn, destinationColumn) {
+        try {
+          await axios.put(
+            `http://localhost:4000/column/${sourceColumn._id}`,
+            sourceColumn
+          );
+          await axios.put(
+            `http://localhost:4000/column/${destinationColumn._id}`,
+            destinationColumn
+          );
+        } catch (err) {
+          console.error(err);
+        }
+      }
+      updateDB(sourceColumn, destinationColumn);
 
       // setState((prev) => {
       //   prev = { ...prev };

@@ -5,7 +5,7 @@ import "./Column.css";
 
 function Column(props) {
   return (
-    <div className="column">
+    <div className="column-place">
       <h3>{props.column.title}</h3>
       <Droppable droppableId={props.id}>
         {(provided) => {
