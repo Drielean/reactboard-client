@@ -1,7 +1,7 @@
 import "./CardDetail.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../../apis/api";
 
 function CardDetail() {
   const [state, setState] = useState({ comments: [] });
@@ -18,7 +18,7 @@ function CardDetail() {
 
   useEffect(() => {
     async function fetchCardDetails() {
-      const response = await axios.get(`http://localhost:4000/card/${id}`);
+      const response = await api.get(`/card/${id}`);
 
       setState({ ...response.data });
     }
@@ -48,7 +48,7 @@ function CardDetail() {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:4000/comment", comment);
+      await api.post("/comment", comment);
       setComment({ ...comment, text: "" });
       setSend(!send);
     } catch (err) {

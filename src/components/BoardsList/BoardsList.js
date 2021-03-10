@@ -1,6 +1,6 @@
 import "./BoardsList.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../apis/api";
 import { Link } from "react-router-dom";
 
 function BoardsList() {
@@ -8,7 +8,7 @@ function BoardsList() {
 
   useEffect(() => {
     async function fetchBoards() {
-      const response = await axios.get("http://localhost:4000/board");
+      const response = await api.get("/board");
 
       setState([...response.data]);
     }

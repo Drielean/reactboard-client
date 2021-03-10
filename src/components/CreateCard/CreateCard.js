@@ -1,6 +1,6 @@
 import "./CreateCard.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../apis/api";
 
 function CreateCard(props) {
   const [state, setState] = useState({
@@ -25,7 +25,7 @@ function CreateCard(props) {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:4000/card", state);
+      await api.post("/card", state);
       props.handleToggle();
     } catch (err) {
       console.error(err);

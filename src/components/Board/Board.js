@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../../apis/api";
 // import _ from "lodash";
 import "./Board.css";
 
@@ -19,7 +19,7 @@ function Board() {
   useEffect(() => {
     async function fetchBoard() {
       try {
-        const response = await axios.get(`http://localhost:4000/board/${id}`);
+        const response = await api.get(`/board/${id}`);
 
         setState({ ...response.data });
       } catch (err) {
@@ -103,14 +103,8 @@ function Board() {
 
       async function updateDB(sourceColumn, destinationColumn) {
         try {
-          await axios.put(
-            `http://localhost:4000/column/${sourceColumn._id}`,
-            sourceColumn
-          );
-          await axios.put(
-            `http://localhost:4000/column/${destinationColumn._id}`,
-            destinationColumn
-          );
+          await api.put(`/column/${sourceColumn._id}`, sourceColumn);
+          await api.put(`/column/${destinationColumn._id}`, destinationColumn);
         } catch (err) {
           console.error(err);
         }
