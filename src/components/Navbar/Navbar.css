@@ -1,4 +1,5 @@
 .navbar {
-  background-color: rgba(1, 1, 1, 0.1);
+  background-color: Lavender;
   height: 80px;
+  border-bottom: solid 1px lightgray;
 }

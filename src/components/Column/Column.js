@@ -1,6 +1,6 @@
 import { Droppable } from "react-beautiful-dnd";
 import Card from "../Card/Card";
-import CreateCard from "../CardAction/CreateCard";
+import CreateCard from "../CreateCard/CreateCard";
 
 import "./Column.css";
 

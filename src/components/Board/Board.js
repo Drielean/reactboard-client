@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 // import _ from "lodash";
 import "./Board.css";
@@ -13,10 +14,12 @@ function Board() {
   const [state, setState] = useState({ columns: [] });
   const [toggle, setToggle] = useState(false);
 
+  const { id } = useParams();
+
   useEffect(() => {
     async function fetchBoard() {
       try {
-        const response = await axios.get("http://localhost:4000/board/main");
+        const response = await axios.get(`http://localhost:4000/board/${id}`);
 
         setState({ ...response.data });
       } catch (err) {
@@ -24,20 +27,7 @@ function Board() {
       }
     }
     fetchBoard();
-  }, []);
-
-  useEffect(() => {
-    async function fetchBoard() {
-      try {
-        const response = await axios.get("http://localhost:4000/board/main");
-
-        setState({ ...response.data });
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    fetchBoard();
-  }, [toggle]);
+  }, [id, toggle]);
 
   const handleToggle = () => {
     setToggle(!toggle);

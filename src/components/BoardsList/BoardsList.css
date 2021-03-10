@@ -1,0 +1,21 @@
+.boards-list {
+  margin: 50px;
+}
+
+.board-item {
+  margin-bottom: 10px;
+  width: 300px;
+  height: 150px;
+  background-color: rgba(1, 1, 1, 0.1);
+  color: white;
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: xx-large;
+}

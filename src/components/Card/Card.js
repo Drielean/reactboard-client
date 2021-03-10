@@ -1,4 +1,5 @@
 import { Draggable } from "react-beautiful-dnd";
+import { Link } from "react-router-dom";
 
 import "./Card.css";
 
@@ -43,7 +44,14 @@ function draggableCard(props) {
                   {props.card.deadline && (
                     <div>{new Date(props.card.deadline).toLocaleString()}</div>
                   )}
-                  <button onClick={() => alert("clicado!")}>Edit</button>
+                  <div>
+                    <Link
+                      to={`/card/${props.card._id}`}
+                      params={{ id: props.card._id }}
+                    >
+                      <button>Ver</button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

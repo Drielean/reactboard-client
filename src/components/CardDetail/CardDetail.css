@@ -1,0 +1,75 @@
+.content-detail {
+  /* height: calc(100% - 80px); */
+  margin: 50px;
+}
+
+.card {
+  margin-bottom: 10px;
+  background-color: rgba(1, 1, 1, 0.1);
+  color: white;
+  /* border: 1px solid white; */
+  border-radius: 7px;
+  display: flex;
+}
+
+.card-priority-1 {
+  background-color: green;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  width: 7px;
+}
+
+.card-priority-2 {
+  background-color: yellow;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  width: 7px;
+}
+
+.card-priority-3 {
+  background-color: red;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  width: 7px;
+}
+
+.card-content {
+  width: calc(100% - 7px);
+  padding: 5px;
+}
+
+.card-description {
+  height: 2em;
+  line-height: 1em;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment {
+  margin: 10px 0;
+  background-color: rgba(1, 1, 1, 0.1);
+  color: white;
+  /* border: 1px solid white; */
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.new-comment {
+  margin: 10px 0;
+  background-color: rgba(1, 1, 1, 0.1);
+  color: white;
+  /* border: 1px solid white; */
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
