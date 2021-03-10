@@ -11,6 +11,7 @@ import Column from "../Column/Column";
 
 function Board() {
   const [state, setState] = useState({ columns: [] });
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     async function fetchBoard() {
@@ -24,6 +25,23 @@ function Board() {
     }
     fetchBoard();
   }, []);
+
+  useEffect(() => {
+    async function fetchBoard() {
+      try {
+        const response = await axios.get("http://localhost:4000/board/main");
+
+        setState({ ...response.data });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchBoard();
+  }, [toggle]);
+
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
 
   const handleDragEnd = ({ destination, source }) => {
     // console.log("destination:", destination);
@@ -128,8 +146,17 @@ function Board() {
   return (
     <div className="board">
       <DragDropContext onDragEnd={handleDragEnd}>
-        {state.columns.map((column) => {
-          return <Column key={column.key} id={column.key} column={column} />;
+        {state.columns.map((column, index) => {
+          return (
+            <Column
+              key={column.key}
+              id={column.key}
+              column={column}
+              index={index}
+              toggle={toggle}
+              handleToggle={handleToggle}
+            />
+          );
         })}
       </DragDropContext>
     </div>

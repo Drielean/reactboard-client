@@ -5,7 +5,7 @@ import "./Card.css";
 function draggableCard(props) {
   let priority = "card-priority-1";
 
-  switch (props.card.priority.level) {
+  switch (props.card.priority) {
     case 1:
       priority = "card-priority-1";
       break;
@@ -18,8 +18,6 @@ function draggableCard(props) {
     default:
       priority = "card-priority-1";
   }
-
-  console.log(priority);
 
   return (
     <Draggable draggableId={props.card._id} index={props.index}>

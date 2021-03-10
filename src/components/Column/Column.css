@@ -3,6 +3,12 @@
   margin-top: 20px;
 }
 
+.column-header {
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .droppable-col {
   width: 100%;
   background-color: rgba(1, 1, 1, 0.1);
@@ -10,4 +16,5 @@
   border-radius: 7px;
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 }
