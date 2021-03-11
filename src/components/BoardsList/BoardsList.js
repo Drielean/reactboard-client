@@ -15,7 +15,6 @@ function BoardsList() {
     fetchBoards();
   }, []);
 
-  console.log(state);
   return (
     <div className="boards-list">
       <ul>

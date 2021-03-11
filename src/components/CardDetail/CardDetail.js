@@ -1,20 +1,21 @@
 import "./CardDetail.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 import { useParams } from "react-router-dom";
 import api from "../../apis/api";
 
+import Comment from "../Comment/Comment";
+
 function CardDetail() {
+  const authContext = useContext(AuthContext);
+
   const [state, setState] = useState({ comments: [] });
 
   const { id } = useParams();
 
-  const [comment, setComment] = useState({
-    creator: "react",
-    text: "",
-    cardId: id,
-  });
+  const [newComment, setNewComment] = useState({});
 
-  const [send, setSend] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     async function fetchCardDetails() {
@@ -23,9 +24,18 @@ function CardDetail() {
       setState({ ...response.data });
     }
     fetchCardDetails();
-  }, [id, send]);
+  }, [id, toggle]);
 
-  let priority = "card-priority-1";
+  useEffect(() => {
+    setNewComment({
+      creatorId: authContext.loggedInUser.user._id,
+      creator: authContext.loggedInUser.user.name,
+      text: "",
+      cardId: id,
+    });
+  }, [authContext.loggedInUser, id]);
+
+  let priority = "card-priority-0";
 
   switch (state.priority) {
     case 1:
@@ -38,25 +48,23 @@ function CardDetail() {
       priority = "card-priority-3";
       break;
     default:
-      priority = "card-priority-1";
+      priority = "card-priority-0";
   }
 
   function handleChange(event) {
-    setComment({ ...comment, [event.target.name]: event.target.value });
+    setNewComment({ ...newComment, [event.target.name]: event.target.value });
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      await api.post("/comment", comment);
-      setComment({ ...comment, text: "" });
-      setSend(!send);
+      await api.post("/comment", newComment);
+      setNewComment({ ...newComment, text: "" });
+      setToggle(!toggle);
     } catch (err) {
       console.error(err);
     }
   }
-
-  console.log(comment);
 
   return (
     <div className="content-detail">
@@ -84,7 +92,7 @@ function CardDetail() {
           <textarea
             id="text"
             name="text"
-            value={comment.text}
+            value={newComment.text}
             onChange={handleChange}
           ></textarea>
           <div>
@@ -96,10 +104,7 @@ function CardDetail() {
       <ul>
         {state.comments.map((comment) => (
           <li key={comment._id}>
-            <div className="comment">
-              <div>{new Date(comment.created).toLocaleString()}</div>
-              <div>{comment.text}</div>
-            </div>
+            <Comment comment={comment} toggle={toggle} setToggle={setToggle} />
           </li>
         ))}
       </ul>

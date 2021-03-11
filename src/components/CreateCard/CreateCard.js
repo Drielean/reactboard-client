@@ -1,16 +1,19 @@
 import "./CreateCard.css";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 import api from "../../apis/api";
 
 function CreateCard(props) {
+  const authContext = useContext(AuthContext);
+
   const [state, setState] = useState({
     columnId: props.columnId,
     deadline: "",
-    creator: "react",
-    owner: "react",
+    creatorId: authContext.loggedInUser.user._id,
+    creator: authContext.loggedInUser.user.name,
+    owner: authContext.loggedInUser.user.name,
     title: "",
     description: "",
-    tags: ["tag1", "tag2", "tag3"],
     priority: 1,
   });
 
@@ -31,8 +34,6 @@ function CreateCard(props) {
       console.error(err);
     }
   }
-
-  useEffect(() => console.log(state), [state]);
 
   return (
     <div className="create-card">
