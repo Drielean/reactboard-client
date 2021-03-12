@@ -60,6 +60,7 @@ function BoardsList() {
         <form onSubmit={handleSubmit}>
           <div className="board-item">
             <input
+              className="input-board"
               name="title"
               value={newBoard.title}
               onChange={handleChange}

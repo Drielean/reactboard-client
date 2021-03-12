@@ -48,3 +48,7 @@ li {
   outline: none;
   cursor: pointer;
 }
+
+.input-board {
+  margin-bottom: 5px;
+}
