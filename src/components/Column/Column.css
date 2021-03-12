@@ -1,7 +1,8 @@
 .column-place {
-  width: 400px;
-  min-width: 400px;
-  margin-top: 20px;
+  width: 500px;
+  min-width: 200px;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .column-header {
@@ -12,10 +13,21 @@
 
 .droppable-col {
   width: 100%;
-  background-color: rgba(1, 1, 1, 0.1);
+  border: 1px solid slateblue;
   padding: 10px 10px 0 10px;
   border-radius: 7px;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: xx-large;
+  color: slateblue;
+}
+
+.add-button {
+  height: 30px;
+  width: 30px;
 }

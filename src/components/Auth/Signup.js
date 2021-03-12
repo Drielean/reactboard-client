@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import api from "../../apis/api";
 
 function Signup(props) {
@@ -70,10 +69,14 @@ function Signup(props) {
         />
       </div>
 
-      <div>
-        <button type="submit">Signup!</button>
+      <div className="footer-auth">
+        <button type="submit" className="btnAuth">
+          Signup!
+        </button>
 
-        <Link to="/login">Already have an account? Click here to login.</Link>
+        <div onClick={props.handleLogin} className="redirect">
+          Already have an account? Click here to login.
+        </div>
       </div>
     </form>
   );

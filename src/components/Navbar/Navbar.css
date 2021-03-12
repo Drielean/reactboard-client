@@ -1,5 +1,8 @@
 .navbar {
-  background-color: Lavender;
   height: 80px;
-  border-bottom: solid 1px lightgray;
+  background-color: slateblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }

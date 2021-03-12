@@ -4,12 +4,14 @@
 }
 
 .card {
+  height: 150px;
   margin-bottom: 10px;
-  background-color: rgba(1, 1, 1, 0.1);
-  color: black;
+  background-color: lightgray;
+  color: slateblue;
   /* border: 1px solid white; */
   border-radius: 7px;
   display: flex;
+  font-family: "Roboto", sans-serif;
 }
 
 .card-priority-0 {
@@ -40,8 +42,17 @@
 }
 
 .card-content {
+  margin-left: 10px;
   width: calc(100% - 7px);
-  padding: 5px;
+  padding: 10px;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-header {
+  font-size: x-large;
 }
 
 .card-description {
@@ -55,4 +66,8 @@
 .dates {
   display: flex;
   justify-content: space-between;
+  font-size: 15px;
+}
+.owner {
+  font-size: 15px;
 }

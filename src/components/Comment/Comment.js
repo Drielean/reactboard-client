@@ -57,7 +57,7 @@ function Comment(props) {
           <div className="text-comment">{props.comment.text}</div>
 
           {authContext.loggedInUser.user._id === props.comment.creatorId && (
-            <div>
+            <div className="footer">
               <button onClick={handleDelete}>Excluir</button>
               <button onClick={() => setEditionActive(!editionActive)}>
                 Editar

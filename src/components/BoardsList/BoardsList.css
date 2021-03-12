@@ -1,14 +1,16 @@
 .boards-list {
   margin: 50px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .board-item {
-  margin-bottom: 10px;
+  margin: 20px;
   width: 300px;
   height: 150px;
-  background-color: rgba(1, 1, 1, 0.1);
+  background-color: lightgray;
   color: white;
-  border: 1px solid white;
+  border: 1px solid slateblue;
   padding: 20px;
   border-radius: 7px;
   display: flex;
@@ -16,6 +18,33 @@
   align-items: center;
 }
 
+.board-item:focus {
+  outline: none;
+  border: 2px solid slateblue;
+  border-radius: 7px;
+  background-color: darkgrey;
+}
+
 .title {
   font-size: xx-large;
+  color: slateblue;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  margin-right: 20px;
+}
+
+.add {
+  background-color: slateblue;
+  border: 0px hidden;
+  border-radius: 2px;
+  height: 40px;
+  font-size: xx-large;
+  color: white;
+  outline: none;
+  cursor: pointer;
 }

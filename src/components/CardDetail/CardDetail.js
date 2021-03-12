@@ -74,14 +74,14 @@ function CardDetail() {
           <div className="card-header">{state.title}</div>
           <div className="card-core">
             <div className="card-description">{state.description}</div>
-            <div>Responsável: {state.owner}</div>
+            <div className="owner">Responsável: {state.owner}</div>
             <div>{state.tags}</div>{" "}
           </div>
           <div className="card-footer">
             <div className="dates">
-              <div>{new Date(state.created).toLocaleString()}</div>
+              <div>Criado em: {new Date(state.created).toLocaleString()}</div>
               {state.deadline && (
-                <div>{new Date(state.deadline).toLocaleString()}</div>
+                <div>Prazo: {new Date(state.deadline).toLocaleString()}</div>
               )}
             </div>
           </div>
@@ -95,19 +95,19 @@ function CardDetail() {
             value={newComment.text}
             onChange={handleChange}
           ></textarea>
-          <div>
+          <div className="footer">
             <button type="submit">Criar</button>
           </div>
         </form>
       </div>
 
-      <ul>
+      <div>
         {state.comments.map((comment) => (
-          <li key={comment._id}>
+          <div key={comment._id}>
             <Comment comment={comment} toggle={toggle} setToggle={setToggle} />
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

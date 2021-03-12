@@ -5,7 +5,8 @@
   border-radius: 7px;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 20px;
+  color: slateblue;
 }
 
 .form {
@@ -16,12 +17,41 @@
 
 .btn-green {
   background-color: green;
+  color: black;
 }
 
 .btn-yellow {
   background-color: yellow;
+  color: black;
 }
 
 .btn-red {
   background-color: red;
+  color: black;
+}
+
+.btn-grey {
+  background-color: gray;
+}
+
+.buttons-priority {
+  margin-top: 20px;
+}
+
+.btnCriar {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 40px;
+  width: 60px;
+}
+label {
+  margin-bottom: 5px;
+}
+
+.input-create-card {
+  margin-bottom: 15px;
+}
+
+.input-date {
+  color: slateblue;
 }

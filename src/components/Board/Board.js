@@ -7,9 +7,6 @@ import "./Board.css";
 
 import Column from "../Column/Column";
 
-// import getData from "../../data";
-// const data = getData();
-
 function Board() {
   const [state, setState] = useState({ columns: [] });
   const [toggle, setToggle] = useState(false);
@@ -111,18 +108,6 @@ function Board() {
       }
       updateDB(sourceColumn, destinationColumn);
 
-      // setState((prev) => {
-      //   prev = { ...prev };
-      //   // Remove from previous cards array
-      //   prev[source.droppableId].cards.splice(source.index, 1);
-
-      //   // Adding to new cards array location
-      //   prev[destination.droppableId].cards.splice(
-      //     destination.index,
-      //     0,
-      //     cardCopy
-      //   );
-
       return prev;
     });
   };
@@ -144,13 +129,6 @@ function Board() {
         })}
       </DragDropContext>
     </div>
-    //   <div className="board">
-    //   <DragDropContext onDragEnd={handleDragEnd}>
-    //     {_.map(state, (column, key) => {
-    //       return <Column key={key} id={key} column={column} />;
-    //     })}
-    //   </DragDropContext>
-    // </div>
   );
 }
 

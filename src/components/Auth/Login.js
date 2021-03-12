@@ -1,5 +1,5 @@
+import "./Auth.css";
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import api from "../../apis/api";
 
 import { AuthContext } from "../../contexts/authContext";
@@ -35,7 +35,7 @@ function Login(props) {
       setErrors({ password: "", email: "" });
       props.history.push("/board");
     } catch (err) {
-      console.error(err.response);
+      console.error(err);
       setErrors({ ...err.response.data.errors });
     }
   }
@@ -45,7 +45,7 @@ function Login(props) {
       <h1>Login</h1>
 
       <div>
-        <label htmlFor="signupFormEmail">E-mail Address</label>
+        <label htmlFor="signupFormEmail">E-mail</label>
         <input
           type="email"
           name="email"
@@ -68,10 +68,14 @@ function Login(props) {
         />
       </div>
 
-      <div>
-        <button type="submit">Login!</button>
+      <div className="footer-auth">
+        <button type="submit" className="btnAuth">
+          Login!
+        </button>
 
-        <Link to="/signup">Don't have an account? Click here to signup!</Link>
+        <div onClick={props.handleSignup} className="redirect">
+          Don't have an account? Click here to signup!
+        </div>
       </div>
     </form>
   );

@@ -1,0 +1,28 @@
+input {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+label {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: xx-large;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+}
+
+.btnAuth {
+  height: 40px;
+  padding: 10px;
+}
+
+.footer-auth {
+  display: flex;
+}
+
+.redirect {
+  cursor: pointer;
+}

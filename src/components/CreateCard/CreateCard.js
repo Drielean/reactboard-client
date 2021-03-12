@@ -40,6 +40,7 @@ function CreateCard(props) {
       <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="title">Título</label>
         <input
+          className="input-create-card"
           id="title"
           name="title"
           type="text"
@@ -49,6 +50,7 @@ function CreateCard(props) {
 
         <label htmlFor="description">Descrição</label>
         <textarea
+          className="input-create-card"
           id="description"
           name="description"
           value={state.description}
@@ -57,15 +59,16 @@ function CreateCard(props) {
 
         <label htmlFor="deadline">Prazo</label>
         <input
+          className="input-create-card input-date"
           id="deadline"
           name="deadline"
           type="datetime-local"
           value={state.deadline}
           onChange={handleChange}
         />
-        <div>
+        <div className="buttons-priority">
           <button
-            className={state.priority === 1 ? "btn-green" : ""}
+            className={state.priority === 1 ? "btn-green" : "btn-grey"}
             name="priority"
             type="button"
             value="1"
@@ -74,7 +77,7 @@ function CreateCard(props) {
             Baixa
           </button>
           <button
-            className={state.priority === 2 ? "btn-yellow" : ""}
+            className={state.priority === 2 ? "btn-yellow" : "btn-grey"}
             name="priority"
             type="button"
             value="2"
@@ -83,7 +86,7 @@ function CreateCard(props) {
             Média
           </button>
           <button
-            className={state.priority === 3 ? "btn-red" : ""}
+            className={state.priority === 3 ? "btn-red" : "btn-grey"}
             name="priority"
             type="button"
             value="3"
@@ -92,8 +95,11 @@ function CreateCard(props) {
             Alta
           </button>
         </div>
-
-        <button type="submit">Criar</button>
+        <div>
+          <button className="btnCriar" type="submit">
+            Criar
+          </button>
+        </div>
       </form>
     </div>
   );

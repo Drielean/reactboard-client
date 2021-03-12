@@ -8,8 +8,12 @@ function Column(props) {
   return (
     <div className="column-place">
       <div className="column-header">
-        <h3>{props.column.title}</h3>
-        {props.index === 0 && <button onClick={props.handleToggle}>+</button>}
+        <h2>{props.column.title}</h2>
+        {props.index === 0 && (
+          <button className="add-button" onClick={props.handleToggle}>
+            +
+          </button>
+        )}
       </div>
 
       {!props.toggle && props.index >= 0 && (

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 
+import logo from "../../images/logo.png";
+
 function Navbar() {
   const authContext = useContext(AuthContext);
 
@@ -12,11 +14,18 @@ function Navbar() {
   }
   return (
     <div className="navbar">
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Signup</Link>
-      <Link to="/login">
-        <button onClick={handleLogout}>Logout</button>
-      </Link>
+      <div className="nav">
+        <div className="div-logo">
+          <img className="logo" src={logo} alt="logo" />
+          <div>React Board</div>
+        </div>
+
+        <div className="links">
+          <Link to="/login">
+            <button onClick={handleLogout}>Logout</button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

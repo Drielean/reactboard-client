@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Card.css";
 
 function draggableCard(props) {
-  let priority = "card-priority-1";
+  let priority = "card-priority-0";
 
   switch (props.card.priority) {
     case 1:
@@ -17,7 +17,7 @@ function draggableCard(props) {
       priority = "card-priority-3";
       break;
     default:
-      priority = "card-priority-1";
+      priority = "card-priority-0";
   }
 
   return (
@@ -32,9 +32,18 @@ function draggableCard(props) {
           >
             <div className={priority}></div>
             <div className="card-content">
-              <div className="card-header">{props.card.title}</div>
+              <div className="card-header">
+                {props.card.title}
+                <div>
+                  <Link
+                    to={`/card/${props.card._id}`}
+                    params={{ id: props.card._id }}
+                  >
+                    <button>Ver</button>
+                  </Link>
+                </div>
+              </div>
               <div className="card-core">
-                <div className="card-description">{props.card.description}</div>
                 <div>Responsável: {props.card.owner}</div>
                 <div>{props.card.tags}</div>{" "}
               </div>
@@ -44,14 +53,6 @@ function draggableCard(props) {
                   {props.card.deadline && (
                     <div>{new Date(props.card.deadline).toLocaleString()}</div>
                   )}
-                  <div>
-                    <Link
-                      to={`/card/${props.card._id}`}
-                      params={{ id: props.card._id }}
-                    >
-                      <button>Ver</button>
-                    </Link>
-                  </div>
                 </div>
               </div>
             </div>

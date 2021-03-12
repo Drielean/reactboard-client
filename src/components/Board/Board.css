@@ -2,7 +2,8 @@
   display: flex;
   width: 100%;
   height: calc(100vh - 80px);
-  justify-content: flex-start;
+  justify-content: space-around;
   overflow-x: scroll;
   overflow-y: scroll;
+  padding-left: 10px;
 }
